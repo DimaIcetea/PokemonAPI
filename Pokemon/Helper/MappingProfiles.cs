@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Pokemon.Models;
 using PokemonReview.Dto;
 
 namespace PokemonReview.Helper
@@ -8,6 +9,7 @@ namespace PokemonReview.Helper
         public MappingProfiles()
         {
             CreateMap<Pokemon.Models.Pokemon, PokemonDto>();
+            CreateMap<Category, CategoryDto>();
         }
     }
 }
