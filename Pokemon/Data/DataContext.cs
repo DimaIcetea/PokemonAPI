@@ -42,8 +42,6 @@ namespace Pokemon.Data
                 .HasOne(p => p.Owner)
                 .WithMany(po => po.PokemonOwners)
                 .HasForeignKey(c => c.OwnerId);
-
-
         }
 
     }
