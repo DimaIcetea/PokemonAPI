@@ -28,21 +28,21 @@ Once the server is running, you can make HTTP requests to retrieve information a
 ## Get Pokémon by ID
 To retrieve information about a Pokémon by its ID, make a GET request to the following endpoint:
 ```
-GET /pokemon/{id}
+GET api/pokemon/{id}
 ```
 Replace {id} with the ID of the Pokémon you want to retrieve.
 
 ## Get Pokémon by Name
 To retrieve information about a Pokémon by its name, make a GET request to the following endpoint:
 ```
-GET /pokemon/{name}
+GET api/pokemon/{name}
 ```
 Replace {name} with the name of the Pokémon you want to retrieve.
 
 ## Example
 Here's an example of how you can retrieve information about a Pokémon:
 ```
-curl http://localhost:3000/pokemon/1
+curl http://localhost:3000/api/pokemon/1
 ```
 This will return information about Pikachu.
 
