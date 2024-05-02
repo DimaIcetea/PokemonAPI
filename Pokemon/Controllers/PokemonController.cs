@@ -21,7 +21,8 @@ namespace Pokemon.Controllers
         [ProducesResponseType(200, Type = typeof(IEnumerable<Models.Pokemon>))]
         public IActionResult GetPokemons()
         {
-            var pokemons = _mapper.Map<List<PokemonDto>>(_pokemonRepository.GetPokemons());
+            var pokemons = _mapper.Map<List<PokemonDto>>
+                (_pokemonRepository.GetPokemons());
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             return Ok(pokemons);
@@ -34,7 +35,8 @@ namespace Pokemon.Controllers
         {
             if (!_pokemonRepository.PokemonExists(pokeId))
                 return NotFound();
-            var pokemon = _mapper.Map<PokemonDto>(_pokemonRepository.GetPokemon(pokeId));
+            var pokemon = _mapper.Map<PokemonDto>
+                (_pokemonRepository.GetPokemon(pokeId));
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
             return Ok(pokemon);

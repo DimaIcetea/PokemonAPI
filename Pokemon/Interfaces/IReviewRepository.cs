@@ -5,8 +5,8 @@ namespace PokemonReview.Interfaces
     public interface IReviewRepository
     {
         ICollection<Review> GetReviews();
-        Review GetReview(int id);
+        Review GetReview(int reviewId);
         ICollection<Review> GetReviewsOfAPokemon(int pokeId);
-        bool ReviewExists(int id);
+        bool ReviewExists(int reviewId);
     }
 }

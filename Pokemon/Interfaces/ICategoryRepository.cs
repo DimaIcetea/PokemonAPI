@@ -5,9 +5,9 @@ namespace PokemonReview.Interfaces
     public interface ICategoryRepository
     {
         ICollection<Category> GetCategories();
-        Category GetCategory(int id);
+        Category GetCategory(int categoryId);
         ICollection<Pokemon.Models.Pokemon> GetPokemonByCategory(int categoryId);
-        bool CategoryExists(int id);
+        bool CategoryExists(int categoryId);
 
     }
 }

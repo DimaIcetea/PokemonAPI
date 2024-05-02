@@ -26,7 +26,8 @@ namespace PokemonReview.Controllers
         [ProducesResponseType(200, Type = typeof(IEnumerable<Category>))]
         public IActionResult GetCategories()
         {
-            var categories = _mapper.Map<List<CategoryDto>>(_categoryRepository.GetCategories());
+            var categories = _mapper.Map<List<CategoryDto>>
+                (_categoryRepository.GetCategories());
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             return Ok(categories);
@@ -39,7 +40,8 @@ namespace PokemonReview.Controllers
         {
             if (!_categoryRepository.CategoryExists(categoryId))
                 return NotFound();
-            var category = _mapper.Map<CategoryDto>(_categoryRepository.GetCategory(categoryId));
+            var category = _mapper.Map<CategoryDto>
+                (_categoryRepository.GetCategory(categoryId));
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             return Ok(category);

@@ -24,7 +24,8 @@ namespace PokemonReview.Controllers
         [ProducesResponseType(200, Type = typeof(IEnumerable<Country>))]
         public IActionResult GetCountries()
         {
-            var countries = _mapper.Map<List<CountryDto>>(_countryRepository.GetCountries());
+            var countries = _mapper.Map<List<CountryDto>>
+                (_countryRepository.GetCountries());
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             return Ok(countries);
@@ -37,7 +38,8 @@ namespace PokemonReview.Controllers
         {
             if (!_countryRepository.CountryExists(countryId))
                 return NotFound();
-            var country = _mapper.Map<CountryDto>(_countryRepository.GetCountry(countryId));
+            var country = _mapper.Map<CountryDto>
+                (_countryRepository.GetCountry(countryId));
             if(!ModelState.IsValid)
                 return BadRequest(ModelState);
             return Ok(country);
@@ -60,7 +62,8 @@ namespace PokemonReview.Controllers
         [ProducesResponseType(400)]
         public IActionResult GetOwnerFromACountry(int countryId)
         {
-            var owner = _mapper.Map<List<OwnerDto>>(_countryRepository.GetOwnersFromACountry(countryId));
+            var owner = _mapper.Map<List<OwnerDto>>
+                (_countryRepository.GetOwnersFromACountry(countryId));
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             return Ok(owner);
