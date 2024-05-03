@@ -11,5 +11,7 @@ namespace PokemonReview.Interfaces
 
         ICollection<Owner> GetOwnersFromACountry(int countryId);
         bool CountryExists(int countryId);
+        bool CreateCountry(Country countryCreate);
+        bool Save();
     }
 }
