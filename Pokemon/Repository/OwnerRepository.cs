@@ -1,5 +1,6 @@
 ﻿using Pokemon.Data;
 using Pokemon.Models;
+using PokemonReview.Dto;
 using PokemonReview.Interfaces;
 
 namespace PokemonReview.Repository
@@ -36,6 +37,18 @@ namespace PokemonReview.Repository
         public bool OwnerExists(int ownerId)
         {
             return _context.Owners.Any(o => o.Id == ownerId);
+        }
+
+        public bool CreateOwner(Owner ownerCreate)
+        {
+            _context.Add(ownerCreate);
+            return Save();
+        }
+
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
         }
     }
 }

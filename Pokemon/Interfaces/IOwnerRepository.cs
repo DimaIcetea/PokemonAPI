@@ -1,4 +1,5 @@
 ﻿using Pokemon.Models;
+using PokemonReview.Dto;
 
 namespace PokemonReview.Interfaces
 {
@@ -9,5 +10,7 @@ namespace PokemonReview.Interfaces
         ICollection<Owner> GetOwnerOfAPokemon(int pokeId);
         ICollection<Pokemon.Models.Pokemon> GetPokemonByOwner(int ownerId);
         bool OwnerExists(int ownerId);
+        bool CreateOwner(Owner ownerCreate);
+        bool Save();
     }
 }
