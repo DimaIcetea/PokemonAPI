@@ -40,5 +40,17 @@ namespace Pokemon.Repository
         {
             return _context.Pokemon.Any(p => p.Id == pokeId);
         }
+
+        public bool CreatePokemon(Models.Pokemon pokemonCreate)
+        {
+            _context.Add(pokemonCreate);
+            return Save();
+        }
+
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
+        }
     }
 }

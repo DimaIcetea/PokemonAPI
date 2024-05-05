@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Pokemon.Interfaces;
+using Pokemon.Models;
 using PokemonReview.Dto;
 
 namespace Pokemon.Controllers
@@ -53,6 +54,30 @@ namespace Pokemon.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             return Ok(rating);
+        }
+        [HttpPost]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        public IActionResult CreateCountry([FromBody] PokemonDto pokemonCreate)
+        {
+            if (pokemonCreate == null)
+                return BadRequest(ModelState);
+            var country = _pokemonRepository.GetPokemons()
+                .Where(c => c.Name.Trim().ToUpper() == pokemonCreate.Name.TrimEnd().ToUpper()).FirstOrDefault();
+            if (country != null)
+            {
+                ModelState.AddModelError("", "Country already exists");
+                return StatusCode(422, ModelState);
+            }
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var pokemonMap = _mapper.Map<Models.Pokemon>(pokemonCreate);
+            if (!_pokemonRepository.CreatePokemon(pokemonMap))
+            {
+                ModelState.AddModelError("", "Something went wrong while saving");
+                return StatusCode(500, ModelState);
+            }
+            return Ok("Successfully created");
         }
     }
 }
