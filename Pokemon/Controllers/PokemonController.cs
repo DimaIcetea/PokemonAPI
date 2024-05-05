@@ -58,7 +58,7 @@ namespace Pokemon.Controllers
         [HttpPost]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        public IActionResult CreatePokemon([FromBody] PokemonDto pokemonCreate)
+        public IActionResult CreatePokemon([FromQuery] int ownerId,[FromQuery] int categoryId, [FromBody] PokemonDto pokemonCreate)
         {
             if (pokemonCreate == null)
                 return BadRequest(ModelState);
@@ -72,7 +72,7 @@ namespace Pokemon.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             var pokemonMap = _mapper.Map<Models.Pokemon>(pokemonCreate);
-            if (!_pokemonRepository.CreatePokemon(pokemonMap))
+            if (!_pokemonRepository.CreatePokemon(ownerId, categoryId, pokemonMap))
             {
                 ModelState.AddModelError("", "Something went wrong while saving");
                 return StatusCode(500, ModelState);

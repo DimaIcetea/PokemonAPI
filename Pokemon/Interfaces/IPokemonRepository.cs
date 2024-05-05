@@ -7,7 +7,7 @@
         Models.Pokemon GetPokemon(string name);
         decimal GetPokemonRating(int pokeId);
         bool PokemonExists(int pokeId);
-        bool CreatePokemon(Models.Pokemon pokemonCreate);
+        bool CreatePokemon(int ownerId, int categoryId, Models.Pokemon pokemonCreate);
         bool Save();
     }
 }

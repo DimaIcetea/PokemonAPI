@@ -1,5 +1,6 @@
 ﻿using Pokemon.Data;
 using Pokemon.Interfaces;
+using Pokemon.Models;
 
 namespace Pokemon.Repository
 {
@@ -41,8 +42,18 @@ namespace Pokemon.Repository
             return _context.Pokemon.Any(p => p.Id == pokeId);
         }
 
-        public bool CreatePokemon(Models.Pokemon pokemonCreate)
+        public bool CreatePokemon(int ownerId, int categoryId,Models.Pokemon pokemonCreate)
         {
+            var pokemonOwnerEntity = _context.Owners.Where
+                (a => a.Id == ownerId).FirstOrDefault();
+            var category = _context.Categories.Where
+                (a => a.Id == categoryId).FirstOrDefault();
+            var pokemonOwner = new PokemonOwner()
+            {
+                Owner = pokemonOwnerEntity,
+                Pokemon = pokemonCreate,
+            };
+
             _context.Add(pokemonCreate);
             return Save();
         }
