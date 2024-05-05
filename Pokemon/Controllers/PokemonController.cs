@@ -58,7 +58,7 @@ namespace Pokemon.Controllers
         [HttpPost]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
-        public IActionResult CreateCountry([FromBody] PokemonDto pokemonCreate)
+        public IActionResult CreatePokemon([FromBody] PokemonDto pokemonCreate)
         {
             if (pokemonCreate == null)
                 return BadRequest(ModelState);
@@ -66,7 +66,7 @@ namespace Pokemon.Controllers
                 .Where(c => c.Name.Trim().ToUpper() == pokemonCreate.Name.TrimEnd().ToUpper()).FirstOrDefault();
             if (country != null)
             {
-                ModelState.AddModelError("", "Country already exists");
+                ModelState.AddModelError("", "Pokemon already exists");
                 return StatusCode(422, ModelState);
             }
             if (!ModelState.IsValid)
