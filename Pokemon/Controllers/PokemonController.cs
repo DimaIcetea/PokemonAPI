@@ -96,10 +96,9 @@ namespace Pokemon.Controllers
             var pokemonMap = _mapper.Map<Models.Pokemon>(updatedPokemon);
             if (!_pokemonRepository.UpdatePokemon(ownerId,categoryId,pokemonMap))
             {
-                ModelState.AddModelError("", "Something went wrong updating owner");
+                ModelState.AddModelError("", "Something went wrong updating pokemon");
                 return StatusCode(500, ModelState);
             }
-
             return NoContent();
         }
     }

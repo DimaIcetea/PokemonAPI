@@ -40,6 +40,12 @@ namespace PokemonReview.Repository
             return Save();
         }
 
+        public bool UpdateReviewer(Reviewer reviewerUpdate)
+        {
+            _context.Update(reviewerUpdate);
+            return Save();
+        }
+
         public bool Save()
         {
             var saved = _context.SaveChanges();
