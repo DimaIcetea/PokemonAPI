@@ -64,6 +64,12 @@ namespace Pokemon.Repository
             return Save();
         }
 
+        public bool DeletePokemon(Models.Pokemon pokemonDelete)
+        {
+            _context.Remove(pokemonDelete);
+            return Save();
+        }
+
         public bool Save()
         {
             var saved = _context.SaveChanges();
