@@ -93,5 +93,14 @@ namespace PokemonReview.Controllers
             }
             return Ok("Successfully created");
         }
+
+        [HttpPut("{countryId}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public IActionResult UpdateCountry(int countryId, [FromBody] CountryDto country)
+        {
+            return BadRequest(ModelState);
+        }
     }
 }
