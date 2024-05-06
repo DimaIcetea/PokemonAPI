@@ -51,6 +51,12 @@ namespace PokemonReview.Repository
             return Save();
         }
 
+        public bool DeleteOwner(Owner ownerDelete)
+        {
+            _context.Remove(ownerDelete);
+            return Save();
+        }
+
         public bool Save()
         {
             var saved = _context.SaveChanges();
