@@ -8,6 +8,7 @@
         decimal GetPokemonRating(int pokeId);
         bool PokemonExists(int pokeId);
         bool CreatePokemon(int ownerId, int categoryId, Models.Pokemon pokemonCreate);
+        bool UpdatePokemon(int ownerId, int categoryId, Models.Pokemon pokemonUpdate);
         bool Save();
     }
 }

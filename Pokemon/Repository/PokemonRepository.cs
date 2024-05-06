@@ -58,6 +58,12 @@ namespace Pokemon.Repository
             return Save();
         }
 
+        public bool UpdatePokemon(int ownerId, int categoryId, Models.Pokemon pokemonUpdate)
+        {
+            _context.Update(pokemonUpdate);
+            return Save();
+        }
+
         public bool Save()
         {
             var saved = _context.SaveChanges();
