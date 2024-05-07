@@ -46,6 +46,12 @@ namespace PokemonReview.Repository
             return Save();
         }
 
+        public bool DeleteReviewer(Reviewer reviewerDelete)
+        {
+            _context.Remove(reviewerDelete);
+            return Save();
+        }
+
         public bool Save()
         {
             var saved = _context.SaveChanges();
